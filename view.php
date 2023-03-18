@@ -69,8 +69,8 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php endforeach; ?>
         <form action="" method="post">
-            <textarea name="msg" placeholder="Enter your comment..."></textarea>
-            <input type="submit" value="Post Comment">
+            <textarea name="msg" placeholder="پاسخ ادمین"></textarea>
+            <input type="submit" value="پاسخ">
         </form>
     </div>
 
