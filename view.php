@@ -33,7 +33,7 @@ if (isset($_POST['msg']) && !empty($_POST['msg'])) {
     header('Location: view.php?id=' . $_GET['id']);
     exit;
 }
-$stmt = $pdo->prepare('SELECT * FROM tickets_comments WHERE ticket_id = ? ORDER BY created DESC');
+$stmt = $pdo->prepare('SELECT * FROM tickets_comments WHERE ticket_id = ? and user_id = 2 ORDER BY created DESC');
 $stmt->execute([$_GET['id']]);
 $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

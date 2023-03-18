@@ -24,14 +24,12 @@ $ticket = $stmt->fetch(PDO::FETCH_ASSOC);
 // Check if ticket exists
 
 $latestTicketCreated = strtotime($ticket['created']);
-$day = 60 * 60 * 24;
-$deadline = $latestTicketCreated + $day;
+$dif = time() - $latestTicketCreated;
 
-$left = $deadline - time();
 
-if ((time() <= $deadline) && ($left > 0)) {
-    $data = ['message' => 'برای ارسال تیکت جدید صبر کنید', 'left' => date('H:i', $left)];
-    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+if ($dif < 86400) {
+    $data = ['message' => 'برای ارسال تیکت جدید صبر کنید', 'left' => date('H:i:s', $dif)];
+    json_encode($data, JSON_UNESCAPED_UNICODE);
 }
 
 
